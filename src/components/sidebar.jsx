@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ChartNoAxesColumn, Award, File } from "lucide-react";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -7,21 +7,11 @@ import { useRouter } from 'next/navigation';
 export default function Sidebar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('skillTest');
-    const router = useRouter(); // Use Next.js router
+    const router = useRouter();
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') { // Ensure code runs in browser
-            const path = window.location.pathname;
-            if (path !== '/') {
-                router.push('/'); // Use router to handle navigation
-            } else {
-                setActiveSection('skillTest');
-            }
-        }
-    }, [router]);
-
-    const handleClick = (section) => {
+    const handleClick = (section, path) => {
         setActiveSection(section);
+        router.push(path);
     };
 
     return (
@@ -34,37 +24,31 @@ export default function Sidebar() {
                 <div className="h-full mt-10 px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
                     <ul className="space-y-2 font-medium">
                         <li>
-                            <Link href="/dashboard">
-                                <div
-                                    onClick={() => handleClick('dashboard')}
-                                    className={`flex items-center text-lg font-bold gap-3 p-2 py-5 cursor-pointer rounded-r-full ${activeSection === 'dashboard' ? 'text-blue-700 bg-gray-100 dark:bg-gray-700' : 'text-gray-600 hover:text-blue-700 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-                                >
-                                    <ChartNoAxesColumn size={24} strokeWidth={3} />
-                                    Dashboard
-                                </div>
-                            </Link>
+                            <div
+                                onClick={() => handleClick('dashboard', '/dashboard')}
+                                className={`flex items-center text-lg font-bold gap-3 p-2 py-5 cursor-pointer rounded-r-full ${activeSection === 'dashboard' ? 'text-blue-700 bg-gray-100 dark:bg-gray-700' : 'text-gray-600 hover:text-blue-700 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+                            >
+                                <ChartNoAxesColumn size={24} strokeWidth={3} />
+                                Dashboard
+                            </div>
                         </li>
                         <li>
-                            <Link href="/">
-                                <div
-                                    onClick={() => handleClick('skillTest')}
-                                    className={`flex items-center text-lg font-bold gap-3 p-2 py-5 cursor-pointer rounded-r-full ${activeSection === 'skillTest' ? 'text-blue-700 bg-gray-100 dark:bg-gray-700' : 'text-gray-600 hover:text-blue-700 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-                                >
-                                    <Award size={24} strokeWidth={2} />
-                                    Skill Test
-                                </div>
-                            </Link>
+                            <div
+                                onClick={() => handleClick('skillTest', '/')}
+                                className={`flex items-center text-lg font-bold gap-3 p-2 py-5 cursor-pointer rounded-r-full ${activeSection === 'skillTest' ? 'text-blue-700 bg-gray-100 dark:bg-gray-700' : 'text-gray-600 hover:text-blue-700 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+                            >
+                                <Award size={24} strokeWidth={2} />
+                                Skill Test
+                            </div>
                         </li>
                         <li>
-                            <Link href="/internship">
-                                <div
-                                    onClick={() => handleClick('internship')}
-                                    className={`flex items-center text-lg font-bold gap-3 p-2 py-5 cursor-pointer rounded-r-full ${activeSection === 'internship' ? 'text-blue-700 bg-gray-100 dark:bg-gray-700' : 'text-gray-600 hover:text-blue-700 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-                                >
-                                    <File size={24} strokeWidth={2} />
-                                    Internship
-                                </div>
-                            </Link>
+                            <div
+                                onClick={() => handleClick('internship', '/internship')}
+                                className={`flex items-center text-lg font-bold gap-3 p-2 py-5 cursor-pointer rounded-r-full ${activeSection === 'internship' ? 'text-blue-700 bg-gray-100 dark:bg-gray-700' : 'text-gray-600 hover:text-blue-700 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+                            >
+                                <File size={24} strokeWidth={2} />
+                                Internship
+                            </div>
                         </li>
                     </ul>
                 </div>
