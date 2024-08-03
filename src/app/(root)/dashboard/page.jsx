@@ -1,7 +1,7 @@
 import Dashboard from '@/components/Dashboard'
 import React from 'react'
 
-export default function Page1() {
+export default function page1() {
   return (
     <div>
       <Dashboard />
