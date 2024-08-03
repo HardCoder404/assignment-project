@@ -2,20 +2,24 @@
 import React, { useState, useEffect } from 'react';
 import { ChartNoAxesColumn, Award, File } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Sidebar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('skillTest');
+    const router = useRouter();
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const path = window.location.pathname;
-            if (path !== '/') {
-                window.location.href = '/';
-            } else {
-                setActiveSection('skillTest');
-            }
-        }
+        // if (typeof window !== 'undefined') {
+        //     const path = window.location.pathname;
+        //     if (path !== '/') {
+        //         window.location.href = '/';
+        //     } else {
+        //         setActiveSection('skillTest');
+        //     }
+        // }
+        router.push('/');
+
     }, []);
 
     const handleClick = (section) => {
