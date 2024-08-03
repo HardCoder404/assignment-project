@@ -1,20 +1,24 @@
 "use client"
-import React, { useState, useEffect } from 'react'
-import { ChartNoAxesColumn, Award, File } from "lucide-react"
+import React, { useState, useEffect } from 'react';
+import { ChartNoAxesColumn, Award, File } from "lucide-react";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Sidebar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('skillTest');
+    const router = useRouter(); // Use Next.js router
 
     useEffect(() => {
-        const path = window.location.pathname;
-        if (path !== '/') {
-            window.location.href = '/';
-        } else {
-            setActiveSection('skillTest');
+        if (typeof window !== 'undefined') { // Ensure code runs in browser
+            const path = window.location.pathname;
+            if (path !== '/') {
+                router.push('/'); // Use router to handle navigation
+            } else {
+                setActiveSection('skillTest');
+            }
         }
-    }, []);
+    }, [router]);
 
     const handleClick = (section) => {
         setActiveSection(section);
