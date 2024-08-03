@@ -1,6 +1,6 @@
-"use client"
-import React, { useState, useEffect } from 'react'
-import { ChartNoAxesColumn, Award, File } from "lucide-react"
+"use client";
+import React, { useState, useEffect } from 'react';
+import { ChartNoAxesColumn, Award, File } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Sidebar() {
@@ -8,11 +8,13 @@ export default function Sidebar() {
     const [activeSection, setActiveSection] = useState('skillTest');
 
     useEffect(() => {
-        const path = window.location.pathname;
-        if (path !== '/') {
-            window.location.href = '/';
-        } else {
-            setActiveSection('skillTest');
+        if (typeof window !== 'undefined') {
+            const path = window.location.pathname;
+            if (path !== '/') {
+                window.location.href = '/';
+            } else {
+                setActiveSection('skillTest');
+            }
         }
     }, []);
 
