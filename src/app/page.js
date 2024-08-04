@@ -1,10 +1,9 @@
-import Home from "@/components/index";
+import HomeContent from "@/components/Content";
 
-
-export default function MainPage() {
+export default function Home() {
   return (
-    <>
-    <Home />
-    </>
+   <div>
+    <HomeContent />
+   </div>
   );
 }

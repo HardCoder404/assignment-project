@@ -4,14 +4,9 @@ import React, { useState } from 'react'
 
 export default function Navbar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('skillTest');
 
     const handleSidebarToggle = () => {
         setIsSidebarOpen(!isSidebarOpen);
-      };
-
-      const handleClick = (section) => {
-        setActiveSection(section);
       };
 
   return (

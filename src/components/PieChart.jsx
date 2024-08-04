@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+"use client"
+import { useEffect, useState } from 'react';
 import ApexCharts from 'react-apexcharts';
-import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is included
 
 const PieChart = ({ percentile }) => {
   const [series, setSeries] = useState([percentile, 100 - percentile]);

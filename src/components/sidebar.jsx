@@ -10,16 +10,7 @@ export default function Sidebar() {
     const router = useRouter();
 
     useEffect(() => {
-        // if (typeof window !== 'undefined') {
-        //     const path = window.location.pathname;
-        //     if (path !== '/') {
-        //         window.location.href = '/';
-        //     } else {
-        //         setActiveSection('skillTest');
-        //     }
-        // }
         router.push('/');
-
     }, []);
 
     const handleClick = (section) => {
